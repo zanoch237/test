@@ -6,7 +6,7 @@ export default function Posts() {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
-      .then((data) => setPosts(data.slice(0, 10))); // limiter à 10
+      .then((data) => setPosts(data.slice(0, 100))); // limite à 10
   }, []);
 
   return (

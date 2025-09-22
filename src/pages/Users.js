@@ -15,7 +15,7 @@ export default function Users() {
       <ul>
         {users.map((u) => (
           <li key={u.id}>
-            <strong>{u.name}</strong> ({u.username}) – {u.email}
+            <strong>{u.name}</strong> ({u.username})  {u.email}
           </li>
         ))}
       </ul>

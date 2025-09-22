@@ -6,7 +6,7 @@ export default function Todos() {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/todos")
       .then((res) => res.json())
-      .then((data) => setTodos(data.slice(0, 15))); // limiter à 15
+      .then((data) => setTodos(data.slice(0, 100))); // limiter à 100
   }, []);
 
   return (
