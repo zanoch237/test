@@ -10,8 +10,7 @@ function App() {
       <Navbar />
       <div style={{ padding: "20px" }}>
         <Routes>
-          <Route path="/" element={<Users />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="users/" element={<Users />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/todos" element={<Todos />} />
         </Routes>

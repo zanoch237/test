@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
-
+import { useFetch } from "../hooks/useFetch";
 export default function Users() {
-  const [users, setUsers] = useState([]);
+  const { data: users, loading, error } = useFetch("https://jsonplaceholder.typicode.com/users");
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+  if (loading) return <div>Chargement...</div>;
+  if (error) return <div>Erreur : {error}</div>;
 
   return (
     <div>
       <h1 style={{ color: "blue" }}> Liste des utilisateurs</h1>
       <ul>
-        {users.map((u) => (
+        {Array.isArray(users) && users.map((u) => (
           <li key={u.id}>
             <strong>{u.name}</strong> ({u.username})  {u.email}
           </li>
