@@ -17,16 +17,33 @@ export default function Posts() {
     { name: "body", label: "Contenu", required: true },
   ];
 
-  const handleSubmit = (data) => {
+  const handleSubmit = async (data) => {
     if (editPost) {
+      // Modification (PUT)
+      await fetch(`https://jsonplaceholder.typicode.com/posts/${editPost.id}` , {
+        method: 'PUT',
+        body: JSON.stringify({ ...editPost, ...data }),
+        headers: { 'Content-Type': 'application/json' }
+      });
       setPostList(postList.map((p) => (p.id === editPost.id ? { ...editPost, ...data } : p)));
       setEditPost(null);
     } else {
-      setPostList([...postList, { ...data, id: Date.now() }]);
+      // Création (POST)
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const newPost = await response.json();
+  setPostList([{ ...data, id: newPost.id || Date.now() }, ...postList]);
     }
   };
 
-  const handleDelete = (data) => {
+  const handleDelete = async (data) => {
+    // Suppression (DELETE)
+    await fetch(`https://jsonplaceholder.typicode.com/posts/${data.id}`, {
+      method: 'DELETE'
+    });
     setPostList(postList.filter((p) => p.id !== data.id));
     setEditPost(null);
   };

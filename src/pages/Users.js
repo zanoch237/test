@@ -18,16 +18,33 @@ export default function Users() {
     { name: "email", label: "Email", required: true, type: "email" },
   ];
 
-  const handleSubmit = (data) => {
+  const handleSubmit = async (data) => {
     if (editUser) {
+      // Modification (PUT)
+      await fetch(`https://jsonplaceholder.typicode.com/users/${editUser.id}` , {
+        method: 'PUT',
+        body: JSON.stringify({ ...editUser, ...data }),
+        headers: { 'Content-Type': 'application/json' }
+      });
       setUserList(userList.map((u) => (u.id === editUser.id ? { ...editUser, ...data } : u)));
       setEditUser(null);
     } else {
-      setUserList([...userList, { ...data, id: Date.now() }]);
+      // Création (POST)
+      const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const newUser = await response.json();
+  setUserList([{ ...data, id: newUser.id || Date.now() }, ...userList]);
     }
   };
 
-  const handleDelete = (data) => {
+  const handleDelete = async (data) => {
+    // Suppression (DELETE)
+    await fetch(`https://jsonplaceholder.typicode.com/users/${data.id}`, {
+      method: 'DELETE'
+    });
     setUserList(userList.filter((u) => u.id !== data.id));
     setEditUser(null);
   };

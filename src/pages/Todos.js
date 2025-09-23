@@ -17,16 +17,33 @@ export default function Todos() {
     { name: "completed", label: "Complété", type: "checkbox" },
   ];
 
-  const handleSubmit = (data) => {
+  const handleSubmit = async (data) => {
     if (editTodo) {
+      // Modification (PUT)
+      await fetch(`https://jsonplaceholder.typicode.com/todos/${editTodo.id}` , {
+        method: 'PUT',
+        body: JSON.stringify({ ...editTodo, ...data }),
+        headers: { 'Content-Type': 'application/json' }
+      });
       setTodoList(todoList.map((t) => (t.id === editTodo.id ? { ...editTodo, ...data } : t)));
       setEditTodo(null);
     } else {
-      setTodoList([...todoList, { ...data, id: Date.now() }]);
+      // Création (POST)
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const newTodo = await response.json();
+  setTodoList([{ ...data, id: newTodo.id || Date.now() }, ...todoList]);
     }
   };
 
-  const handleDelete = (data) => {
+  const handleDelete = async (data) => {
+    // Suppression (DELETE)
+    await fetch(`https://jsonplaceholder.typicode.com/todos/${data.id}`, {
+      method: 'DELETE'
+    });
     setTodoList(todoList.filter((t) => t.id !== data.id));
     setEditTodo(null);
   };
