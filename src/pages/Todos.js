@@ -19,7 +19,7 @@ export default function Todos() {
 
   const handleSubmit = async (data) => {
     if (editTodo) {
-      // Modification (PUT)
+      // Modifier (PUT)
       await fetch(`https://jsonplaceholder.typicode.com/todos/${editTodo.id}` , {
         method: 'PUT',
         body: JSON.stringify({ ...editTodo, ...data }),
@@ -28,7 +28,7 @@ export default function Todos() {
       setTodoList(todoList.map((t) => (t.id === editTodo.id ? { ...editTodo, ...data } : t)));
       setEditTodo(null);
     } else {
-      // Création (POST)
+      // Créer (POST)
       const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
         method: 'POST',
         body: JSON.stringify(data),
@@ -40,7 +40,7 @@ export default function Todos() {
   };
 
   const handleDelete = async (data) => {
-    // Suppression (DELETE)
+    // Supprimer (DELETE)
     await fetch(`https://jsonplaceholder.typicode.com/todos/${data.id}`, {
       method: 'DELETE'
     });
