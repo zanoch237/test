@@ -5,7 +5,7 @@ function App(): JSX.Element {
     <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       {/* Navbar */}
       <nav className="flex justify-between items-center px-8 py-6">
-        <div className="text-gray-800 font-semibold text-lg">
+  <div className="text-gray-800 font-semibold text-lg ml-16">
           YourCompany.
         </div>
         <div className="hidden md:flex space-x-8 text-gray-600 text-sm">
@@ -14,14 +14,14 @@ function App(): JSX.Element {
           <a href="#" className="hover:text-gray-800">About</a>
           <a href="#" className="hover:text-gray-800">Help</a>
         </div>
-        <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full text-sm font-medium">
+  <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full text-sm font-medium mr-8">
           Sign Up
         </button>
       </nav>
 
       {/* Contenu du main */}
   <div className="flex items-end justify-between px-8 mt-16 relative h-full">
-    <div className="max-w-lg z-10">
+  <div className="max-w-lg z-10 ml-16">
           <h1 className="text-6xl font-bold text-black mb-4 leading-tight">
             UI Kit<br />
             Landing Page
@@ -53,7 +53,7 @@ function App(): JSX.Element {
         <div className="flex flex-col justify-end h-full">
           <div className="grid grid-cols-2 gap-8 py-8 ml-32">
             {/* First Card  */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl transform -rotate-[12deg] w-full max-w-xs mx-auto">
+            <div className="bg-white rounded-2xl p-6 shadow-2xl transform -rotate-[18deg] w-full max-w-xs mx-auto">
               <div className="text-gray-800 font-semibold mb-4">Choose Your Design</div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm text-gray-600">
@@ -67,14 +67,14 @@ function App(): JSX.Element {
             </div>
 
             {/* 5eme Card - Contact Info */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl transform -rotate-[12deg] w-full max-w-xs mx-auto">
+            <div className="bg-white rounded-2xl p-6 shadow-2xl transform -rotate-[18deg] w-full max-w-xs mx-auto">
               <div className="text-gray-800 font-semibold mb-2">Contact Info</div>
               <div className="text-gray-500 text-xs leading-relaxed">
                              Our services will make your website unique,              </div>
             </div>
 
             {/* 4eme Card  */}
-            <div className="bg-white rounded-2xl p-6 shadow-2xl transform -rotate-[12deg] w-full max-w-xs mx-auto">
+            <div className="bg-white rounded-2xl p-6 shadow-2xl transform -rotate-[18deg] w-full max-w-xs mx-auto">
               <div className="text-gray-800 font-semibold mb-3">Achieve </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
