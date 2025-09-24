@@ -1,5 +1,5 @@
-import React from 'react';
-import { Calendar, User, ArrowUpRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Calendar, User, ArrowUpRight, Star } from 'lucide-react';
 
 interface BlogCardProps {
   title: string;
@@ -12,6 +12,10 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ title, excerpt, category, author, date, image, tags }: BlogCardProps) {
+  // Favoris state local
+  const [isFavorite, setIsFavorite] = useState(false);
+  const toggleFavorite = () => setIsFavorite(fav => !fav);
+
   return (
     <div className="group cursor-pointer">
       <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
@@ -31,6 +35,15 @@ export default function BlogCard({ title, excerpt, category, author, date, image
 
         {/* Content */}
         <div className="p-5">
+          {/* Bouton Mettre en favoris */}
+          <button
+            className={`mb-2 px-3 py-1 flex items-center gap-2 rounded transition-colors ${isFavorite ? 'bg-yellow-100 text-yellow-700' : 'bg-gray-100 text-gray-500 hover:bg-yellow-50'}`}
+            onClick={toggleFavorite}
+            aria-label={isFavorite ? 'Retirer des favoris' : 'Mettre en favoris'}
+          >
+            <Star size={18} fill={isFavorite ? '#FACC15' : 'none'} className={isFavorite ? 'text-yellow-500' : 'text-gray-400'} />
+            {isFavorite ? 'Retirer des favoris' : 'Mettre en favoris'}
+          </button>
           {/* Category */}
           <span className="text-xs font-medium text-blue-600 uppercase tracking-wide mb-2 block">
             {category}

@@ -52,7 +52,7 @@ export default function BlogHero() {
             </div>
           </div>
           
-          {/* Read More Arrow */}
+          {/* Read More */}
           <div className="absolute top-6 right-6">
             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
               <ArrowUpRight size={20} className="text-white" />
