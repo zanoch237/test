@@ -26,7 +26,7 @@ export default function Header({ isMobileMenuOpen, setIsMobileMenuOpen }: Header
             <a href="#" className="text-gray-900 hover:text-blue-600 font-medium">Home</a>
             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Product</a>
             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Services</a>
-            <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">Blog</a>
+            <a href="#" className="text-gray-600 hover:text-blue-700 font-medium">Blog</a>
             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
           </nav>
 
